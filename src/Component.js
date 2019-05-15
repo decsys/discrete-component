@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import * as props from "./Component.props";
 import { LikertScale } from "@decsys/rating-scales";
+import stats from "./Component.stats";
 
 const Component = ({
   barLeftMargin,
@@ -70,19 +71,6 @@ const Component = ({
 Component.params = props.params;
 Component.propTypes = props.propTypes;
 Component.defaultProps = props.defaultProps;
-
-Component.stats = results => {
-  return {
-    visualisations: [
-      {
-        name: "Test",
-        component: <div>Hello there!</div>
-      }
-    ],
-    stats: {
-      mean: results.reduce((agg, r) => agg + r.value, 0) / results.length
-    }
-  };
-};
+Component.stats = stats;
 
 export default Component;

@@ -4,12 +4,15 @@ import { action } from "@storybook/addon-actions";
 import Component from "./Component";
 
 const dummyLikertResults = [
-  { index: 0, value: 1 },
-  { index: 0, value: 5 },
-  { index: 0, value: 5 },
-  { index: 0, value: 4 },
-  { index: 0, value: 2 },
-  { index: 0, value: 3 }
+  { index: 0, value: "Hello" },
+  { index: 0, value: "Hello" },
+  { index: 0, value: 3 },
+  { index: 0, value: 3 },
+  { index: 0, value: "Hllo" },
+  { index: 0, value: "Hello" },
+  { index: 0, value: "Goodbye" },
+  { index: 0, value: true },
+  { index: 0, value: "Other" }
 ];
 
 const actions = {
@@ -50,16 +53,9 @@ storiesOf("Component", module)
       </div>
     );
   })
-  .add("Visualisations", () => {
+  .add("Visualisation", () => {
     var stats = Component.stats(dummyLikertResults);
     return (
-      <div>
-        {stats.visualisations.map(x => (
-          <div key={x.name}>
-            <h4>{x.name}</h4>
-            {x.component}
-          </div>
-        ))}
-      </div>
+      <div style={{ width: "40%" }}>{stats.visualizations[0].component}</div>
     );
   });

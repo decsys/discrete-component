@@ -36,7 +36,8 @@
   "dependencies": {
     "@decsys/param-types": "^0.3.0",
     "@decsys/rating-scales": "^0.8.0",
-    "styled-icons": "^7.6.0"
+    "styled-icons": "^7.6.0",
+    "victory": "^32.2.3"
   },
   "peerDependencies": {
     "prop-types": "~15.x",
