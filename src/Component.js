@@ -71,4 +71,18 @@ Component.params = props.params;
 Component.propTypes = props.propTypes;
 Component.defaultProps = props.defaultProps;
 
+Component.stats = results => {
+  return {
+    visualisations: [
+      {
+        name: "Test",
+        component: <div>Hello there!</div>
+      }
+    ],
+    stats: {
+      mean: results.reduce((agg, r) => agg + r.value, 0) / results.length
+    }
+  };
+};
+
 export default Component;
