@@ -3,17 +3,45 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import Component from "./Component";
 
-const dummyLikertResults = [
-  { index: 0, value: "Hello" },
-  { index: 0, value: "Hello" },
-  { index: 0, value: 3 },
-  { index: 0, value: 3 },
-  { index: 0, value: "Hllo" },
-  { index: 0, value: "Hello" },
-  { index: 0, value: "Goodbye" },
-  { index: 0, value: true },
-  { index: 0, value: "Other" }
-];
+const dummyLikertResults = {
+  numbers: [
+    { index: 0, value: 1 },
+    { index: 1, value: 7 },
+    { index: 2, value: 3 },
+    { index: 2, value: 3 },
+    { index: 3, value: 4 },
+    { index: 4, value: 2 },
+    { index: 4, value: 2 },
+    { index: 0, value: 1 },
+    { index: 4, value: 2 }
+  ],
+  mixed: [
+    { index: 0, value: "Hello" },
+    { index: 0, value: "Hello" },
+    { index: 2, value: 3 },
+    { index: 2, value: 3 },
+    { index: 3, value: "Hllo" },
+    { index: 0, value: "Hello" },
+    { index: 1, value: "Goodbye" },
+    { index: 4, value: true },
+    { index: 5, value: "Other" }
+  ]
+};
+
+const visualization = stats => () => (
+  <div style={{ width: "40%" }}>{stats.visualizations[0].component}</div>
+);
+
+const stats = stats => () => (
+  <div>
+    {Object.keys(stats.stats).map(x => (
+      <div key={x}>
+        <h4>{x}</h4>
+        <p>{stats.stats[x]}</p>
+      </div>
+    ))}
+  </div>
+);
 
 const actions = {
   setNextEnabled: action("Next button toggled"),
@@ -40,22 +68,13 @@ storiesOf("Component", module)
       {...actions}
     />
   ))
-  .add("Stats", () => {
-    var stats = Component.stats(dummyLikertResults);
-    return (
-      <div>
-        {Object.keys(stats.stats).map(x => (
-          <div key={x}>
-            <h4>{x}</h4>
-            <p>{stats.stats[x]}</p>
-          </div>
-        ))}
-      </div>
-    );
-  })
-  .add("Visualisation", () => {
-    var stats = Component.stats(dummyLikertResults);
-    return (
-      <div style={{ width: "40%" }}>{stats.visualizations[0].component}</div>
-    );
-  });
+  .add(
+    "Numeric Visualisation",
+    visualization(Component.stats(dummyLikertResults.numbers))
+  )
+  .add("Numeric stats", stats(Component.stats(dummyLikertResults.numbers)))
+  .add(
+    "Mixed value Visualisation",
+    visualization(Component.stats(dummyLikertResults.mixed))
+  )
+  .add("Mixed value stats", stats(Component.stats(dummyLikertResults.mixed)));
