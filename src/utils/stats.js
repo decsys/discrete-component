@@ -1,12 +1,14 @@
 /**
- * Parse all items in an array as floats
- * else return NaN
+ * Parse all items in an array as floats,
+ * throws a `TypeError` if any inputs can't be parsed to floats.
  * @param {number[]} numbers an array of items to parse
  */
 const allFloats = numbers => {
-  if (!numbers instanceof Array) return NaN;
+  if (!(numbers instanceof Array))
+    throw new TypeError("Expected an Array of numbers");
   const values = numbers.map(n => parseFloat(n));
-  if (values.some(n => n === NaN)) return NaN;
+  if (values.some(n => isNaN(n)))
+    throw new TypeError("Expected an Array of numbers");
   return values;
 };
 
@@ -14,37 +16,21 @@ const allFloats = numbers => {
  * Calculate the mean of several numbers
  * @param {number[]} numbers An array of numbers
  * @returns {number} The mean value of the numbers,
- * or `NaN` if the calculation was unsuccessful
+ * throws a `TypeError` if any inputs can't be parsed to floats.
  */
-export const mean = numbers => {
-  const values = allFloats(numbers);
-  if (values === NaN) return NaN;
-  return values.reduce((sum, v) => sum + v) / values.length;
-};
+export const mean = numbers =>
+  allFloats(numbers).reduce((sum, v) => sum + v) / numbers.length;
 
 /**
  * Calculate the standard deviation of several numbers
  * @param {number[]} numbers An array of numbers
  * @returns {number} The standard deviation of the numbers,
- * or `NaN` if the calculation was unsuccessful
+ * throws a `TypeError` if any inputs can't be parsed to floats.
  */
 export const sd = numbers => {
   const values = allFloats(numbers);
-  if (values === NaN) return NaN;
   const meanValue = mean(values);
   const adjusted = values.map(v => (v - meanValue) * (v - meanValue));
   const adjustedMean = mean(adjusted);
   return Math.sqrt(adjustedMean);
-};
-
-/**
- * Wrap a function that could return NaN in a handler
- * which returns "N/A" if the result is NaN
- * @param {*} f The function to wrap
- * @param  {...any} args Arguments for the function
- */
-export const nanWrap = f => (...args) => {
-  const result = f(args);
-  if (result === NaN) return "N/A";
-  return result;
 };
