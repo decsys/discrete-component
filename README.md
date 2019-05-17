@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/decsys/likert-component.svg)
+
 # DECSYS Likert Scale Component
 
 This is a component that allows a Survey Participant to provide a discrete answer on a Likert Scale.
