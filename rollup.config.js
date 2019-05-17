@@ -27,10 +27,17 @@ export default {
       react: "React",
       "styled-components": "styled",
       "react-dom": "ReactDOM",
-      "prop-types": "PropTypes"
+      "prop-types": "PropTypes",
+      victory: "Victory"
     }
   },
-  external: ["react", "styled-components", "react-dom", "prop-types"],
+  external: [
+    "react",
+    "styled-components",
+    "react-dom",
+    "prop-types",
+    "victory"
+  ],
   plugins: [
     replace({
       "process.env.NODE_ENV": JSON.stringify("production")
