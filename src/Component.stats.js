@@ -1,26 +1,36 @@
 import React from "react";
+import * as math from "mathjs";
 import Visualization from "./components/Visualization";
-import { mean, sd } from "./utils/stats";
-import { handleTypeErrors } from "./utils/errors";
+
 
 const stats = results => {
+  const { values, indices } = results.reduce(
+    (data, r, i, a) => {
+      data.values.push(r.value);
+      data.indices.push(r.index);
+      return data;
+    },
+    { values: [], indices: [] }
+  );
   return {
     visualizations: [
       {
         name: "Likert Results",
-        component: <Visualization values={results.map(r => r.value)} />
+        component: <Visualization values={values} />
       }
     ],
     stats: {
-      // well... mean only really works for numeric values
+      // well... mean only works for numeric values
       // and is also a "false" value for a likert scale providing a rank
       // so we'll do the best we can
-      ["Values Mean"]: handleTypeErrors(mean)(results.map(r => r.value)),
-      ["Values Standard Deviation"]: handleTypeErrors(sd)(
-        results.map(r => r.value)
-      ),
-      ["Selected Index Mean"]: mean(results.map(r => r.index)),
-      ["Selected Index Standard Deviation"]: sd(results.map(r => r.index))
+      ["Values Mean"]: values.some(n => isNaN(parseFloat(n)))
+        ? "N/A"
+        : math.mean(values),
+      ["Values Standard Deviation"]: values.some(n => isNaN(parseFloat(n)))
+        ? "N/A"
+        : math.std(values),
+      ["Selected Index Mean"]: math.mean(indices),
+      ["Selected Index Standard Deviation"]: math.std(indices)
     }
   };
 };

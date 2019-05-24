@@ -28,7 +28,8 @@ export default {
       "styled-components": "styled",
       "react-dom": "ReactDOM",
       "prop-types": "PropTypes",
-      victory: "Victory"
+      victory: "Victory",
+      mathjs: "math"
     }
   },
   external: [
@@ -36,7 +37,8 @@ export default {
     "styled-components",
     "react-dom",
     "prop-types",
-    "victory"
+    "victory",
+    "mathjs"
   ],
   plugins: [
     replace({
