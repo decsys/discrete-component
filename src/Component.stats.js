@@ -2,12 +2,11 @@ import React from "react";
 import * as math from "mathjs";
 import Visualization from "./components/Visualization";
 
-
-const stats = results => {
+const stats = (_, results) => {
   const { values, indices } = results.reduce(
-    (data, r, i, a) => {
-      data.values.push(r.value);
-      data.indices.push(r.index);
+    (data, { value, index }) => {
+      data.values.push(value);
+      data.indices.push(index);
       return data;
     },
     { values: [], indices: [] }

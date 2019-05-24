@@ -70,11 +70,14 @@ storiesOf("Component", module)
   ))
   .add(
     "Numeric Visualisation",
-    visualization(Component.stats(dummyLikertResults.numbers))
+    visualization(Component.stats({}, dummyLikertResults.numbers))
   )
-  .add("Numeric stats", stats(Component.stats(dummyLikertResults.numbers)))
+  .add("Numeric stats", stats(Component.stats({}, dummyLikertResults.numbers)))
   .add(
     "Mixed value Visualisation",
-    visualization(Component.stats(dummyLikertResults.mixed))
+    visualization(Component.stats({}, dummyLikertResults.mixed))
   )
-  .add("Mixed value stats", stats(Component.stats(dummyLikertResults.mixed)));
+  .add(
+    "Mixed value stats",
+    stats(Component.stats({}, dummyLikertResults.mixed))
+  );
