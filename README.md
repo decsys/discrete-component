@@ -1,4 +1,6 @@
 ![GitHub](https://img.shields.io/github/license/decsys/discrete-component.svg)
+[![Build Status](https://dev.azure.com/UniversityOfNottingham/DECSYS/_apis/build/status/decsys.discrete-component?branchName=master)](https://dev.azure.com/UniversityOfNottingham/DECSYS/_build/latest?definitionId=173&branchName=master)
+![GitHub release](https://img.shields.io/github/release/decsys/discrete-component.svg)
 
 # DECSYS Discrete Scale Component
 
