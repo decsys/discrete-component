@@ -18,7 +18,7 @@ const Visualization = ({ values }) => {
         tickCount={Math.max(...counts)}
         tickFormat={x => parseInt(x).toString()}
       />
-      <VictoryAxis label="Likert Value" />
+      <VictoryAxis label="Discrete Value" />
       <VictoryBar data={data} />
     </VictoryChart>
   );

@@ -14,13 +14,13 @@ const stats = (_, results) => {
   return {
     visualizations: [
       {
-        name: "Likert Results",
+        name: "Discrete Results",
         component: <Visualization values={values} />
       }
     ],
     stats: {
       // well... mean only works for numeric values
-      // and is also a "false" value for a likert scale providing a rank
+      // and is also a "false" value for a Discrete scale providing a rank
       // so we'll do the best we can
       ["Values Mean"]: values.some(n => isNaN(parseFloat(n)))
         ? "N/A"

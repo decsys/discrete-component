@@ -1,8 +1,8 @@
 {
-  "name": "@decsys/likert-component",
-  "componentName": "Likert",
+  "name": "@decsys/discrete-component",
+  "componentName": "Discrete",
   "version": "0.8.0",
-  "description": "The Likert Scale component for the DECSYS Survey Platform",
+  "description": "The Discrete Scale component for the DECSYS Survey Platform",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rollup": "rollup -c",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@decsys/param-types": "^1.0.0-beta.1",
-    "@decsys/rating-scales": "^1.0.0-beta.2",
+    "@decsys/rating-scales": "file:../rating-scales/decsys-rating-scales-1.0.0-beta.3.tgz",
     "styled-icons": "^7.15.1"
   },
   "peerDependencies": {

@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import Component from "./Component";
 
-const dummyLikertResults = {
+const dummyDiscreteResults = {
   numbers: [
     { index: 0, value: 1 },
     { index: 1, value: 7 },
@@ -70,14 +70,14 @@ storiesOf("Component", module)
   ))
   .add(
     "Numeric Visualisation",
-    visualization(Component.stats({}, dummyLikertResults.numbers))
+    visualization(Component.stats({}, dummyDiscreteResults.numbers))
   )
-  .add("Numeric stats", stats(Component.stats({}, dummyLikertResults.numbers)))
+  .add("Numeric stats", stats(Component.stats({}, dummyDiscreteResults.numbers)))
   .add(
     "Mixed value Visualisation",
-    visualization(Component.stats({}, dummyLikertResults.mixed))
+    visualization(Component.stats({}, dummyDiscreteResults.mixed))
   )
   .add(
     "Mixed value stats",
-    stats(Component.stats({}, dummyLikertResults.mixed))
+    stats(Component.stats({}, dummyDiscreteResults.mixed))
   );
