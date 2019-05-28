@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@decsys/param-types": "^1.0.0-beta.1",
-    "@decsys/rating-scales": "file:../rating-scales/decsys-rating-scales-1.0.0-beta.3.tgz",
+    "@decsys/rating-scales": "^1.0.0-beta.3",
     "styled-icons": "^7.15.1"
   },
   "peerDependencies": {
