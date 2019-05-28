@@ -41,6 +41,7 @@
     "styled-icons": "^7.15.1"
   },
   "peerDependencies": {
+    "mathjs": "~5",
     "prop-types": "~15",
     "react": "~16",
     "styled-components": "~4",
