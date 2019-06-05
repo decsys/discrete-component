@@ -49,8 +49,7 @@ const Component = ({
 
       if (!radioParams[key] && !radioParams[secondaryKey]) return acc;
 
-      const radio = [radioParams[key], radioParams[secondaryKey]]; // add the radio value
-      //if (radioParams[secondaryKey]) radio.push(radioParams[secondaryKey]); // add the Secondary label
+      const radio = [radioParams[key], radioParams[secondaryKey]];
 
       acc.push(radio);
       return acc;
