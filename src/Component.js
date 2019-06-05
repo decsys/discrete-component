@@ -17,8 +17,16 @@ const Component = ({
   initialValue,
   logResults,
   setNextEnabled,
-  ...radioParams
+  ...p
 }) => {
+  // get radio params from all other props
+  // (or more accurately, strip out anything the Platform passes
+  // that we don't need, like `logEvent` or other API methods)
+  const radioParams = Object.keys(p).reduce((acc, key) => {
+    if (key.includes("radio")) acc[key] = p[key];
+    return acc;
+  }, {});
+
   const handleDiscreteSelected = e => {
     logResults(e.detail);
     setNextEnabled(true);
