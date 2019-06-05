@@ -37,11 +37,12 @@ const Component = ({
     .reduce((acc, key) => {
       if (key.includes("Secondary")) return acc; // ignore secondary params
 
-      if (!radioParams[key]) return acc;
-      
-      const radio = [radioParams[key]]; // add the radio value
-      if (radioParams[`${key}Secondary`])
-        radio.push(radioParams[`${key}Secondary`]); // add the Secondary label
+      const secondaryKey = `${key}Secondary`;
+
+      if (!radioParams[key] && !radioParams[secondaryKey]) return acc;
+
+      const radio = [radioParams[key], radioParams[secondaryKey]]; // add the radio value
+      //if (radioParams[secondaryKey]) radio.push(radioParams[secondaryKey]); // add the Secondary label
 
       acc.push(radio);
       return acc;
