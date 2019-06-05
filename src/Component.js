@@ -32,18 +32,19 @@ const Component = ({
   }, []);
 
   // prepare radio button values
-  const radios = [];
-  for (let i = 0; i < 7; i++) {
-    const key = `radio${i + 1}`;
-    if (radioParams[key]) {
-      const r = [radioParams[key]];
+  const radios = Object.keys(radioParams)
+    .sort((a, b) => a.match(/\d+/) - b.match(/\d+/)) // guarantee ascending numeric order
+    .reduce((acc, key) => {
+      if (key.includes("Secondary")) return acc; // ignore secondary params
 
+      if (!radioParams[key]) return acc;
+      const radio = [radioParams[key]]; // add the radio value
       if (radioParams[`${key}Secondary`])
-        r.push(radioParams[`${key}Secondary`]);
+        radio.push(radioParams[`${key}Secondary`]); // add the Secondary label
 
-      radios.push(r);
-    }
-  }
+      acc.push(radio);
+      return acc;
+    }, []);
 
   return (
     <DiscreteScale
