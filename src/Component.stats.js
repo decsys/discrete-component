@@ -1,7 +1,7 @@
 import React from "react";
 import * as math from "mathjs";
 import Visualization from "./components/Visualization";
-import { getRadioParams, getRadios } from "./Component";
+import { getRadioParams, getRadios } from "./utils/radio-params";
 
 const fixedVal = 3;
 const fixed = (fn, ...args) => parseFloat(fn(...args).toFixed(fixedVal));
@@ -20,7 +20,9 @@ const stats = (params, results) => {
     visualizations: [
       {
         name: "Discrete Results",
-        component: <Visualization resultValues={values} radioValues={radioValues} />
+        component: (
+          <Visualization resultValues={values} radioValues={radioValues} />
+        )
       }
     ],
     stats: {
