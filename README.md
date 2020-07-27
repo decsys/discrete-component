@@ -6,6 +6,8 @@
 
 This is a component that allows a Survey Participant to provide a discrete answer on a Discrete Scale.
 
+**This repository is for 1.x only. The code has since moved to the [main decsys monorepo](https://github.com/decsys/decsys).**
+
 # Installation
 
 - Download a distributable version from Github Releases
